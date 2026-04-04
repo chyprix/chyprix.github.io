@@ -3,6 +3,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CHYPRIX ENCRYPTION</title>
+ <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d4af37">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icon-192.png">
+
 <style>
 :root{--neon:#00e5ff;--bg:#020202;--card:#0a0a0a;--gold:#ffcc00;--alert:#ff3b3b;--ok:#00ff88}
 *{box-sizing:border-box}
@@ -200,5 +206,14 @@ async function run(mode) {
  }
 }
 
-</script></body>
+</script>
+
+ <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Chyprix Engine Online'))
+      .catch(err => console.error('Uplink Failed:', err));
+  }
+</script>
+</body>
 </html>
