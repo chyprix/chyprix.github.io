@@ -1,6 +1,6 @@
 {
   "name": "CHYPRIX Encryption",
-  "short_name": "Chyprix",
+  "short_name": "encrypt",
   "description": "AES-256 file encryption with .cpx format",
   "start_url": "./index.html",
   "scope": "./",
