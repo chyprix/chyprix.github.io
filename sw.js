@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chyprix-vault-v1';
+const CACHE_NAME = 'chyprix-vault-v6';
 const urlsToCache = [
   '/',
   '/index.html',
