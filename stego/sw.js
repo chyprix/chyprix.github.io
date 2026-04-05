@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chyprix-stego-v5';
+const CACHE_NAME = 'chyprix-stego-v8';
 const urlsToCache = [
   './',
   './index.html',
