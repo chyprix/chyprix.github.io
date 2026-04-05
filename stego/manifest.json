@@ -1,5 +1,5 @@
 {
-  "id": "chyprix-stego-sub",
+  "id": "chyprix-stego-exclusive",
   "name": "Chyprix Stego",
   "short_name": "Stego",
   "start_url": "./",
@@ -19,3 +19,4 @@
     }
   ]
 }
+
