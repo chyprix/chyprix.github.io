@@ -1,8 +1,8 @@
-const CACHE_NAME = 'chyprix-stego-v8.1';
+const CACHE_NAME = 'chyprix-stego-v9.0';
 const urlsToCache = [
   './',
   './index.html',
-  './manifest.json',
+  './manifest-stego.json', 
   './icon-192.png',
   './icon-512.png'
 ];
