@@ -1,7 +1,7 @@
 {
   "id": "chyprix-vault-main",
   "name": "Chyprix Vault",
-  "short_name": "Vault",
+  "short_name": "CHYPrix",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
