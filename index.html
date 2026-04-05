@@ -1,355 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>CHYPRIX ENCRYPTION | LUXURY EDITION</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0a0806">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-    --gold-soft: #e6c27a;
-    --gold-glow: rgba(230, 194, 122, 0.25);
-    --bg: #0c0a08;
-    --card: rgba(18, 16, 14, 0.75);
-    --neon-muted: #7fcdff;
-    --alert: #d45a5a;
-    --ok: #7bc97b;
-}
-* { box-sizing: border-box; }
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: radial-gradient(circle at 30% 20%, #141210, #030201);
-    font-family: 'Montserrat', 'Consolas', monospace;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ddd9d0;
-    padding: 1rem;
-}
-.box {
-    width: 100%;
-    max-width: 440px;
-    padding: 2rem 1.8rem;
-    background: var(--card);
-    backdrop-filter: blur(12px);
-    border-radius: 2rem;
-    border: 1px solid rgba(230, 194, 122, 0.25);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(230,194,122,0.1) inset;
-    transition: all 0.3s ease;
-}
-.topline {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold-soft), #f8e2b0, var(--gold-soft), transparent);
-    margin-bottom: 1rem;
-    border-radius: 2px;
-    animation: softPulse 3s infinite ease-in-out;
-}
-@keyframes softPulse {
-    0% { opacity: 0.4; width: 60%; margin-left: 20%; }
-    50% { opacity: 1; width: 100%; margin-left: 0; }
-    100% { opacity: 0.4; width: 60%; margin-left: 20%; }
-}
-h2 {
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: 1.9rem;
-    letter-spacing: 4px;
-    color: var(--gold-soft);
-    text-shadow: 0 2px 8px rgba(230,194,122,0.3);
-    margin: 0.25rem 0 0.2rem;
-}
-.clock {
-    text-align: center;
-    font-size: 0.65rem;
-    color: #b0a896;
-    letter-spacing: 1px;
-    margin-bottom: 1.2rem;
-    border-bottom: 1px dashed rgba(230,194,122,0.3);
-    display: inline-block;
-    width: auto;
-    padding-bottom: 0.3rem;
-}
-.dropzone {
-    position: relative;
-    border: 1px dashed rgba(230,194,122,0.5);
-    padding: 1rem;
-    border-radius: 1.2rem;
-    text-align: center;
-    font-size: 0.75rem;
-    color: #b8ac8c;
-    margin-bottom: 0.8rem;
-    transition: 0.25s;
-    background: rgba(0,0,0,0.3);
-    cursor: pointer;
-}
-.dropzone.active {
-    border-color: var(--gold-soft);
-    background: rgba(230,194,122,0.08);
-    box-shadow: 0 0 15px var(--gold-glow);
-    color: var(--gold-soft);
-}
-.filename {
-    font-size: 0.7rem;
-    color: var(--gold-soft);
-    text-align: center;
-    margin-top: 0.2rem;
-    opacity: 0;
-    transition: 0.2s;
-}
-.filename.show {
-    opacity: 1;
-    text-shadow: 0 0 6px rgba(230,194,122,0.4);
-}
-input[type=file] { display: none; }
-.input-box {
-    position: relative;
-    margin-top: 1rem;
-}
-.input-box input {
-    width: 100%;
-    padding: 0.8rem 1.2rem;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(230,194,122,0.4);
-    color: var(--gold-soft);
-    border-radius: 2rem;
-    text-align: center;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    transition: 0.25s;
-    font-family: 'Montserrat', monospace;
-    outline: none;
-}
-.input-box.active input {
-    border-color: var(--gold-soft);
-    box-shadow: 0 0 12px var(--gold-glow);
-    background: rgba(0,0,0,0.6);
-}
-.eye {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 0.9rem;
-    opacity: 0.5;
-    color: var(--gold-soft);
-}
-.btns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
-    margin-top: 1.4rem;
-}
-button {
-    padding: 0.8rem;
-    font-size: 0.7rem;
-    font-weight: 600;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(230,194,122,0.5);
-    color: #ece3d0;
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    letter-spacing: 1px;
-    font-family: 'Montserrat', sans-serif;
-}
-button:hover {
-    background: var(--gold-soft);
-    color: #0a0806;
-    border-color: var(--gold-soft);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(230,194,122,0.25);
-}
-.enc {
-    border-color: var(--gold-soft);
-    color: var(--gold-soft);
-}
-.dec {
-    border-color: var(--neon-muted);
-    color: var(--neon-muted);
-}
-.wipe {
-    width: 100%;
-    margin-top: 0.8rem;
-    background: rgba(40,20,20,0.6);
-    border-color: #a05a4a;
-    color: #e0a080;
-}
-.progress {
-    height: 3px;
-    background: #2a241e;
-    margin-top: 1rem;
-    border-radius: 3px;
-    overflow: hidden;
-    display: none;
-}
-.fill {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, var(--gold-soft), #f8e2b0);
-    transition: 0.1s;
-}
-.status {
-    font-size: 0.65rem;
-    margin-top: 0.7rem;
-    text-align: center;
-    color: #b0a68a;
-    letter-spacing: 1px;
-}
-.percent {
-    font-size: 0.6rem;
-    color: #9e9278;
-    text-align: center;
-    margin-top: 0.2rem;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CHYPRIX CORE | PRIVATE SUITE</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0806">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 30% 10%, #141210, #030201);
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    :root {
+      --gold: #c6a75e;
+      --gold2: #e7d7a8;
+      --card-bg: #0a0a0a;
+      --border: #1a1a1a;
+      --text-dim: #aaa;
+    }
+
+    .core {
+      max-width: 520px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 1.5rem;
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      position: relative;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.9), inset 0 0 30px rgba(255,255,255,0.02);
+    }
+
+    /* gold line atas */
+    .core::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      margin: 0 auto 1.2rem auto;
+      border-radius: 2px;
+      background: linear-gradient(90deg,
+        rgba(198,167,94,0),
+        rgba(198,167,94,0.2),
+        rgba(198,167,94,0.6),
+        rgba(231,215,168,1),
+        rgba(198,167,94,0.6),
+        rgba(198,167,94,0.2),
+        rgba(198,167,94,0)
+      );
+      box-shadow: 0 0 12px rgba(198,167,94,0.25), 0 0 24px rgba(198,167,94,0.15);
+    }
+
+    /* bottom glow */
+    .core::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(198,167,94,0), rgba(198,167,94,0.08), rgba(198,167,94,0.15));
+      border-radius: 0 0 1.5rem 1.5rem;
+      pointer-events: none;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #111;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      letter-spacing: 8px;
+      font-weight: 400;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subline {
+      font-size: 0.6rem;
+      color: #555;
+      margin-top: 0.2rem;
+      letter-spacing: 1px;
+    }
+
+    .status {
+      margin-top: 0.5rem;
+      font-size: 0.6rem;
+      color: #777;
+    }
+
+    .status span {
+      color: #00ff9c;
+    }
+
+    /* grid 2 kolom */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .app-card {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1rem 0.5rem;
+      text-align: center;
+      transition: 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .app-card:hover {
+      border-color: rgba(198,167,94,0.6);
+      background: #0c0c0c;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 12px rgba(198,167,94,0.1);
+    }
+
+    .app-name {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .app-desc {
+      font-size: 0.55rem;
+      color: var(--text-dim);
+    }
+
+    .launch {
+      font-size: 0.7rem;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      font-size: 0.55rem;
+      text-align: center;
+      color: #555;
+      border-top: 1px solid #111;
+      padding-top: 0.8rem;
+    }
+
+    @media (max-width: 480px) {
+      .core { padding: 1.2rem; }
+      h1 { font-size: 1.3rem; letter-spacing: 5px; }
+      .app-name { font-size: 0.85rem; }
+    }
+  </style>
 </head>
 <body>
-<div class="box">
-<div class="topline"></div>
-<h2>CHYPRIX ENCRYPTION</h2>
-<div style="text-align: center;"><span class="clock" id="clock"></span></div>
-<div class="dropzone" id="drop">✧ DROP FILE OR TAP ✧</div>
-<div class="filename" id="fname"></div>
-<input type="file" id="file">
-<div class="input-box" id="box1">
-<input type="password" id="pass" placeholder="MASTER KEY">
-<span class="eye" onclick="toggle('pass')">👁</span>
-</div>
-<div class="input-box" id="box2">
-<input type="password" id="pass2" placeholder="CONFIRM KEY">
-<span class="eye" onclick="toggle('pass2')">👁</span>
-</div>
-<div class="btns">
-<button class="enc" onclick="run('enc')">ENCRYPT FILE</button>
-<button class="dec" onclick="run('dec')">DECRYPT FILE</button>
-</div>
-<button class="wipe" onclick="wipe()">WIPE SYSTEM</button>
-<div class="progress" id="bar"><div class="fill" id="fill"></div></div>
-<div class="status" id="status">IDLE</div>
-<div class="percent" id="percent"></div>
-</div>
-<script>
-const drop=document.getElementById('drop');
-const fileInput=document.getElementById('file');
-const fname=document.getElementById('fname');
-const box1=document.getElementById('box1');
-const box2=document.getElementById('box2');
-const pass=document.getElementById('pass');
-const pass2=document.getElementById('pass2');
-const statusDiv=document.getElementById('status');
-const percentDiv=document.getElementById('percent');
-const fillDiv=document.getElementById('fill');
-const barDiv=document.getElementById('bar');
 
-function typeText(el,text){let i=0;el.placeholder="";let int=setInterval(()=>{if(i<text.length){el.placeholder+=text.charAt(i);i++;}else clearInterval(int)},20)}
-drop.onclick=()=>fileInput.click();
-fileInput.onchange=()=>{
- let f=fileInput.files[0];
- if(f){
-  drop.classList.add('active');
-  fname.innerText=f.name;
-  fname.classList.add('show');
-  box1.classList.add('active');
-  typeText(pass,"INSERT PASSPHRASE");
-  setTimeout(()=>{
-    box2.classList.add('active');
-    typeText(pass2,"VERIFY PASSPHRASE");
-  },600);
- }
-}
-function toggle(id){let e=document.getElementById(id);e.type=e.type==='password'?'text':'password'}
-function updateClock(){clock.innerText=new Date().toUTCString()}
-setInterval(updateClock,1000);updateClock();
-function wipe(){fileInput.value="";fname.innerText="";fname.classList.remove('show');drop.classList.remove('active');box1.classList.remove('active');box2.classList.remove('active');pass.value="";pass2.value="";statusDiv.innerText="IDLE";percentDiv.innerText="";barDiv.style.display="none";fillDiv.style.width="0%";}
-const CHUNK_SIZE = 10 * 1024 * 1024;
-async function deriveKey(password, salt) {
- const enc = new TextEncoder();
- const keyMaterial = await crypto.subtle.importKey("raw", enc.encode(password), {name: "PBKDF2"}, false, ["deriveKey"]);
- return crypto.subtle.deriveKey({name: "PBKDF2", salt, iterations: 120000, hash: "SHA-256"}, keyMaterial, {name: "AES-GCM", length: 256}, false, ["encrypt", "decrypt"]);
-}
-async function run(mode) {
- const file = fileInput.files[0];
- const p = pass.value, p2 = pass2.value;
- if(!file || !p) return alert("INVALID INPUT");
- if(mode === 'enc' && p !== p2) return alert("VERIFY FAILED");
- let offset = 0, key, salt, outputChunks = [];
- statusDiv.innerText = "PROCESSING";
- barDiv.style.display = "block";
- try {
- if (mode === 'enc') {
-  salt = crypto.getRandomValues(new Uint8Array(16));
-  key = await deriveKey(p, salt);
-  outputChunks.push(new TextEncoder().encode("CPX1"), salt);
-  const meta = JSON.stringify({ name: file.name });
-  const metaBytes = new TextEncoder().encode(meta);
-  const metaIv = crypto.getRandomValues(new Uint8Array(12));
-  const metaEnc = await crypto.subtle.encrypt({name: "AES-GCM", iv: metaIv}, key, metaBytes);
-  const lenBuf = new ArrayBuffer(4);
-  new DataView(lenBuf).setUint32(0, metaEnc.byteLength, true);
-  outputChunks.push(metaIv, new Uint8Array(lenBuf), new Uint8Array(metaEnc));
-  while (offset < file.size) {
-   const slice = file.slice(offset, offset + CHUNK_SIZE);
-   const iv = crypto.getRandomValues(new Uint8Array(12));
-   const encrypted = await crypto.subtle.encrypt({name: "AES-GCM", iv}, key, await slice.arrayBuffer());
-   outputChunks.push(iv, new Uint8Array(encrypted));
-   offset += CHUNK_SIZE;
-   let pct = Math.min(100, Math.floor(offset / file.size * 100));
-   fillDiv.style.width = pct + "%";
-   percentDiv.innerText = pct + "%";
+<div class="core">
+  <div class="header">
+    <h1>CHYPRIX CORE</h1>
+    <div class="subline">Private Control Interface</div>
+    <div class="status">
+      SYSTEM <span>ACTIVE</span> | UTC <span id="utc"></span>
+    </div>
+  </div>
+
+  <div class="apps-grid">
+    <div class="app-card" onclick="go('/encrypt/')">
+      <div class="app-name">ENCRYPT</div>
+      <div class="app-desc">AES-256 file vault</div>
+      <div class="launch">▶ LAUNCH</div>
+    </div>
+    <div class="app-card" onclick="go('/nano/')">
+      <div class="app-name">NANO</div>
+      <div class="app-desc">Squeeze & encrypt text</div>
+      <div class="launch">▶ LAUNCH</div>
+    </div>
+    <div class="app-card" onclick="go('/stego/')">
+      <div class="app-name">STEGO</div>
+      <div class="app-desc">Steganography phantom</div>
+      <div class="launch">▶ LAUNCH</div>
+    </div>
+    <div class="app-card" onclick="go('/keypass/')">
+      <div class="app-name">KEYPASS</div>
+      <div class="app-desc">Dual key generator</div>
+      <div class="launch">▶ LAUNCH</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    CORE ACTIVE | UTC <span id="clock"></span>
+  </div>
+</div>
+
+<script>
+  // Ganti BASE_URL sesuai domain brand Anda
+  const BASE_URL = 'https://chyprix.github.io';
+  
+  function go(path) {
+    // Menggabungkan base URL dengan path subfolder
+    const fullUrl = BASE_URL + path;
+    window.open(fullUrl, '_blank');
   }
- } else {
-  const header = new TextDecoder().decode(await file.slice(0,4).arrayBuffer());
-  if(header !== "CPX1") throw "INVALID";
-  salt = new Uint8Array(await file.slice(4,20).arrayBuffer());
-  key = await deriveKey(p, salt);
-  offset = 20;
-  let metaName = null;
-  try {
-   const metaIv = new Uint8Array(await file.slice(offset, offset+12).arrayBuffer()); offset+=12;
-   const lenBuf = await file.slice(offset, offset+4).arrayBuffer();
-   const metaLen = new DataView(lenBuf).getUint32(0,true); offset+=4;
-   const metaEnc = await file.slice(offset, offset+metaLen).arrayBuffer(); offset+=metaLen;
-   const metaDec = await crypto.subtle.decrypt({name:"AES-GCM", iv:metaIv}, key, metaEnc);
-   metaName = JSON.parse(new TextDecoder().decode(metaDec)).name;
-  } catch(e){}
-  while(offset < file.size) {
-   const iv = new Uint8Array(await file.slice(offset, offset+12).arrayBuffer()); offset+=12;
-   let ctSize = Math.min(CHUNK_SIZE+16, file.size-offset);
-   const ct = await file.slice(offset, offset+ctSize).arrayBuffer(); offset+=ctSize;
-   const decrypted = await crypto.subtle.decrypt({name:"AES-GCM", iv}, key, ct);
-   outputChunks.push(new Uint8Array(decrypted));
-   let pct = Math.min(100, Math.floor(offset / file.size * 100));
-   fillDiv.style.width = pct + "%";
-   percentDiv.innerText = pct + "%";
+
+  function updateTime() {
+    const now = new Date();
+    const utc = now.toISOString().split('T')[1].split('.')[0];
+    document.getElementById('utc').innerText = utc;
+    document.getElementById('clock').innerText = utc;
   }
-  var original = metaName || file.name.replace(/\.cpx$/,'');
- }
- const blob = new Blob(outputChunks, {type:"application/octet-stream"});
- const a = document.createElement("a");
- a.href = URL.createObjectURL(blob);
- if(mode==='enc'){
-  let base = file.name.replace(/\.[^/.]+$/,'');
-  a.download = base + ".cpx";
- } else {
-  a.download = "chyprix." + original;
- }
- a.click();
- statusDiv.innerText = "SUCCESS";
- fillDiv.style.background = "linear-gradient(90deg, #e6c27a, #f8e2b0)";
- } catch(e) {
-  statusDiv.innerText = "FAIL / WRONG KEY";
-  fillDiv.style.background = "#d45a5a";
- }
-}
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register('sw.js'); }
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('SW registered:', reg))
+        .catch(err => console.log('SW error:', err));
+    });
+  }
 </script>
 </body>
 </html>
